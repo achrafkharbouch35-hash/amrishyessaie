@@ -2032,22 +2032,72 @@ const mobileMenu =
 
 
 /* =====================================================
-   LOADER
+   LOADER — VERSION SÉCURISÉE
 ===================================================== */
 
-window.addEventListener("load", () => {
+(function () {
 
-    setTimeout(() => {
+    function hideLoader() {
 
-        if (loader) {
-            loader.classList.add("hidden");
+        const loaderElement =
+            document.getElementById("loader");
+
+        if (loaderElement) {
+            loaderElement.classList.add("hidden");
         }
 
-        document.body.classList.remove("modal-open");
+        document.body.classList.remove(
+            "modal-open"
+        );
 
-    }, 1800);
+    }
 
-});
+
+    /* Chargement normal */
+
+    if (
+        document.readyState === "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                setTimeout(
+                    hideLoader,
+                    700
+                );
+
+            },
+            {
+                once: true
+            }
+        );
+
+    } else {
+
+        setTimeout(
+            hideLoader,
+            700
+        );
+
+    }
+
+
+    /* =================================================
+       SÉCURITÉ ABSOLUE
+
+       Même si une image ne charge pas,
+       même si une ressource externe bloque,
+       le site sortira du preload.
+    ================================================= */
+
+    setTimeout(
+        hideLoader,
+        3000
+    );
+
+})();
 
 
 /* =====================================================
