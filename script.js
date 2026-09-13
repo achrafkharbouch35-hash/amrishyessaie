@@ -1805,7 +1805,7 @@ function getProductImage(product) {
 
 const CATEGORY_IMAGES = {
     femme: "F.jpg",
-    homme: "H.jpg"
+    homme: "H.jpeg"
 };
 
 
