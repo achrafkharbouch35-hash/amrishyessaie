@@ -1799,7 +1799,26 @@ const products = [
 function getProductImage(product) {
     return IMAGE_PATH + product.image;
 }
+/* =========================================================
+   IMAGE COMMUNE FEMME / HOMME
+   ========================================================= */
 
+function getGenderImage(product) {
+
+    if (!product) {
+        return "";
+    }
+
+    if (product.category === "femme") {
+        return "F.jpg";
+    }
+
+    if (product.category === "homme") {
+        return "H.jpeg";
+    }
+
+    return "";
+}
 
 /* =====================================================
    STATE
@@ -2525,17 +2544,17 @@ function openProduct(id) {
             "modalProductImage"
         );
 
-    if (modalImage) {
+  if (image) {
 
-        modalImage.src =
-            getProductImage(currentProduct);
+    const genderImage = getGenderImage(product);
 
-        modalImage.alt =
-            currentProduct.name;
+    image.src = genderImage;
+    image.alt = product.category === "femme"
+        ? "Collection parfums femme"
+        : "Collection parfums homme";
 
-        modalImage.style.display =
-            "block";
-
+    image.style.display = "block";
+}
     }
 
 
