@@ -1799,7 +1799,30 @@ const products = [
 function getProductImage(product) {
     return IMAGE_PATH + product.image;
 }
+/* =====================================================
+   IMAGES COMMUNES FEMME / HOMME
+===================================================== */
 
+const CATEGORY_IMAGES = {
+    femme: "F.jpg",
+    homme: "H.jpg"
+};
+
+
+/* =====================================================
+   IMAGE DU MODAL
+===================================================== */
+
+function getCategoryImage(product) {
+
+    if (!product) {
+        return CATEGORY_IMAGES.femme;
+    }
+
+    return product.category === "homme"
+        ? CATEGORY_IMAGES.homme
+        : CATEGORY_IMAGES.femme;
+}
 
 /* =====================================================
    STATE
@@ -2517,27 +2540,39 @@ function openProduct(id) {
 
     }
 
+/* =====================================================
+   IMAGE COMMUNE FEMME / HOMME DANS LE MODAL
+===================================================== */
 
-    /* PHOTO DU PRODUIT DANS LE MODAL */
+const modalImage =
+    document.getElementById(
+        "modalProductImage"
+    );
 
-    const modalImage =
-        document.getElementById(
-            "modalProductImage"
-        );
+if (modalImage) {
 
-    if (modalImage) {
+    modalImage.src =
+        getCategoryImage(currentProduct);
 
-        modalImage.src =
-            getProductImage(currentProduct);
+    modalImage.alt =
+        currentProduct.category === "femme"
+            ? "Collection parfums femme"
+            : "Collection parfums homme";
 
-        modalImage.alt =
-            currentProduct.name;
+    modalImage.style.display =
+        "block";
 
-        modalImage.style.display =
-            "block";
+    /* petite animation à chaque ouverture */
+    modalImage.classList.remove(
+        "category-image-show"
+    );
 
-    }
+    void modalImage.offsetWidth;
 
+    modalImage.classList.add(
+        "category-image-show"
+    );
+}
 
     /* PRIX DES FORMATS */
 
