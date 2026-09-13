@@ -35,13 +35,47 @@
 
 <div class="loader" id="loader">
     <div class="loader-content">
-        <div class="loader-logo">ÉLIXIR</div>
+
+        <div class="loader-logo">
+            ÉLIXIR
+        </div>
+
         <div class="loader-line">
             <span></span>
         </div>
+
         <p>MAISON DE PARFUMS</p>
+
     </div>
 </div>
+
+<!-- Sécurité : le site ne peut jamais rester bloqué
+     sur le preload -->
+<script>
+(function () {
+    function hideLoader() {
+        var loader = document.getElementById("loader");
+
+        if (loader) {
+            loader.classList.add("hidden");
+        }
+
+        document.body.classList.remove("modal-open");
+    }
+
+    /* Retrait normal */
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(hideLoader, 700);
+        });
+    } else {
+        setTimeout(hideLoader, 700);
+    }
+
+    /* Sécurité absolue */
+    setTimeout(hideLoader, 3000);
+})();
+</script>
 
 
 <!-- =====================================================
