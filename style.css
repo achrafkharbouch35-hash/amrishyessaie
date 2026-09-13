@@ -5149,3 +5149,54 @@ footer {
         object-fit: cover !important;
     }
 }
+/* =========================================================
+   IMAGE FEMME / HOMME DANS LA FICHE PARFUM
+   ========================================================= */
+
+.modal-product-image {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.modal-product-image img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: 100% !important;
+    max-height: 100% !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    transform: none !important;
+    animation: none !important;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .modal-product-image {
+        width: 100% !important;
+        height: 280px !important;
+        min-height: 280px !important;
+    }
+
+    .modal-product-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+}
+
+/* PETITS TÉLÉPHONES */
+@media (max-width: 400px) {
+
+    .modal-product-image {
+        height: 240px !important;
+        min-height: 240px !important;
+    }
+}
