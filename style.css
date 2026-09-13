@@ -5449,3 +5449,101 @@ footer {
     }
 
 }
+/* =====================================================
+   IMAGE COMMUNE FEMME / HOMME — MODAL
+===================================================== */
+
+.modal-category-image {
+
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 90%;
+    max-height: 580px;
+
+    object-fit: contain;
+
+    margin: auto;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    filter:
+        drop-shadow(
+            0 30px 35px rgba(0,0,0,.65)
+        );
+
+    opacity: 0;
+
+    transform:
+        scale(.88)
+        translateY(20px);
+
+    transition:
+        opacity .55s ease,
+        transform .65s cubic-bezier(.22,1,.36,1),
+        filter .55s ease;
+}
+
+
+/* Animation lorsque l'image apparaît */
+
+.modal-category-image.category-image-show {
+
+    opacity: 1;
+
+    transform:
+        scale(1)
+        translateY(0);
+
+}
+
+
+/* Effet très léger au survol */
+
+.modal-category-image:hover {
+
+    transform:
+        scale(1.025)
+        translateY(-4px);
+
+    filter:
+        drop-shadow(
+            0 40px 45px rgba(0,0,0,.75)
+        );
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .modal-category-image {
+
+        max-width: 88%;
+        max-height: 330px;
+
+    }
+
+}
+
+
+/* =====================================================
+   PETITS TÉLÉPHONES
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .modal-category-image {
+
+        max-width: 92%;
+        max-height: 280px;
+
+    }
+
+}
